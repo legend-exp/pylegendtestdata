@@ -42,6 +42,7 @@ repos:
   rev: "22.3.0"
   hooks:
   - id: black
+    args: ["--skip-string-normalization"]
 
 - repo: https://github.com/hadialqattan/pycln
   rev: "v1.3.2"

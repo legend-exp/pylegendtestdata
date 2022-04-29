@@ -4,32 +4,49 @@ import os.path as path
 from git import InvalidGitRepositoryError, Repo
 
 
-def _get_testdata_repo():
+class LegendTestData:
+    def __init__(self):
+        self._default_git_ref = 'main'
+        self._repo_path = '/tmp/legend-testdata'
+        self._repo: Repo = self._init_testdata_repo()
 
-    repo_path = "/tmp/legend-testdata"
+    def _init_testdata_repo(self):
 
-    if not path.isdir(repo_path):
-        os.mkdir(repo_path)
+        if not path.isdir(self._repo_path):
+            os.mkdir(self._repo_path)
 
-    repo = None
-    try:
-        repo = Repo(repo_path)
-    except InvalidGitRepositoryError:
-        repo = Repo.clone_from(
-            "https://github.com/legend-exp/legend-testdata", repo_path
-        )
+        repo = None
+        try:
+            repo = Repo(self._repo_path)
+        except InvalidGitRepositoryError:
+            repo = Repo.clone_from(
+                'https://github.com/legend-exp/legend-testdata', self._repo_path
+            )
 
-    return repo_path, repo
+        repo.git.checkout(self._default_git_ref)
 
+        return repo
 
-def get_path(filename: str):
+    def checkout(self, git_ref: str):
+        self._repo.git.checkout(git_ref)
 
-    rootdir = _get_testdata_repo()[0]
-    full_path = path.abspath(path.join(rootdir, "data", filename))
+    def reset(self):
+        self._repo.git.checkout(self._default_git_ref)
 
-    if not path.isfile(full_path):
-        raise FileNotFoundError(
-            f"Test file '{filename}' not found in legend-testdata repository"
-        )
+    def get_path(self, filename: str):
+        """Get an absolute path to a LEGEND test data file
 
-    return full_path
+        Parameters
+        ----------
+        filename: str
+                  path of the file relative to legend-testdata/data
+        """
+
+        full_path = path.abspath(path.join(self._repo_path, 'data', filename))
+
+        if not path.isfile(full_path):
+            raise FileNotFoundError(
+                f'Test file "{filename}" not found in legend-testdata repository'
+            )
+
+        return full_path
