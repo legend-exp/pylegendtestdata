@@ -38,8 +38,8 @@ class LegendTestData:
 
         Parameters
         ----------
-        filename: str
-                  path of the file relative to legend-testdata/data
+        filename : str
+            path of the file relative to legend-testdata/data
         """
 
         full_path = path.abspath(path.join(self._repo_path, 'data', filename))
