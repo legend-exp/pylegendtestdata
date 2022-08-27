@@ -13,6 +13,12 @@ def test_get_file():
     )
 
 
+def test_get_directory():
+    assert (
+        ldata.get_path('fcio') == '/tmp/legend-testdata/data/fcio'
+    )
+
+
 def test_file_not_found():
     with pytest.raises(FileNotFoundError):
         ldata.get_path('non-existing-file.ext')

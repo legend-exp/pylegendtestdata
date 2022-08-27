@@ -44,9 +44,9 @@ class LegendTestData:
 
         full_path = path.abspath(path.join(self._repo_path, 'data', filename))
 
-        if not path.isfile(full_path):
+        if not path.exists(full_path):
             raise FileNotFoundError(
-                f'Test file "{filename}" not found in legend-testdata repository'
+                f'Test file/directory "{filename}" not found in legend-testdata repository'
             )
 
         return full_path
