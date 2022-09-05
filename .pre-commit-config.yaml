@@ -46,7 +46,7 @@ repos:
     args: ["--py36-plus"]
 
 - repo: https://github.com/psf/black
-  rev: "22.6.0"
+  rev: "22.8.0"
   hooks:
   - id: black
     args: ["--skip-string-normalization"]
@@ -58,7 +58,7 @@ repos:
     args: ["--all"]
 
 - repo: https://github.com/PyCQA/flake8
-  rev: "5.0.2"
+  rev: "5.0.4"
   hooks:
   - id: flake8
     additional_dependencies: [flake8-bugbear, flake8-print]
@@ -70,7 +70,7 @@ repos:
     stages: [manual]
 
 - repo: https://github.com/codespell-project/codespell
-  rev: "v2.1.0"
+  rev: "v2.2.1"
   hooks:
   - id: codespell
     args: ["-L", "hist,gaus,nd,ans,crate,nin,puls,spms"]
