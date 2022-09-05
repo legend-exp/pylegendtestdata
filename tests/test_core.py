@@ -14,9 +14,7 @@ def test_get_file():
 
 
 def test_get_directory():
-    assert (
-        ldata.get_path('fcio') == '/tmp/legend-testdata/data/fcio'
-    )
+    assert ldata.get_path('fcio') == '/tmp/legend-testdata/data/fcio'
 
 
 def test_file_not_found():
