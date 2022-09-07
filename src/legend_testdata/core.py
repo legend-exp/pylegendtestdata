@@ -1,15 +1,15 @@
 import os
 import os.path as path
-from tempfile import gettempdir
 from getpass import getuser
+from tempfile import gettempdir
 
 from git import InvalidGitRepositoryError, Repo
 
 
 class LegendTestData:
     def __init__(self):
-        self._default_git_ref = 'main'
-        self._repo_path = path.join(gettempdir(), 'legend-testdata-' + getuser())
+        self._default_git_ref = "main"
+        self._repo_path = path.join(gettempdir(), "legend-testdata-" + getuser())
         self._repo: Repo = self._init_testdata_repo()
 
     def _init_testdata_repo(self):
@@ -22,7 +22,7 @@ class LegendTestData:
             repo = Repo(self._repo_path)
         except InvalidGitRepositoryError:
             repo = Repo.clone_from(
-                'https://github.com/legend-exp/legend-testdata', self._repo_path
+                "https://github.com/legend-exp/legend-testdata", self._repo_path
             )
 
         repo.git.checkout(self._default_git_ref)
@@ -36,15 +36,14 @@ class LegendTestData:
         self._repo.git.checkout(self._default_git_ref)
 
     def get_path(self, filename: str):
-        """Get an absolute path to a LEGEND test data file
+        """Get an absolute path to a LEGEND test data file.
 
         Parameters
         ----------
         filename : str
             path of the file relative to legend-testdata/data
         """
-
-        full_path = path.abspath(path.join(self._repo_path, 'data', filename))
+        full_path = path.abspath(path.join(self._repo_path, "data", filename))
 
         if not path.exists(full_path):
             raise FileNotFoundError(
