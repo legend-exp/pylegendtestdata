@@ -1,5 +1,7 @@
 import os
 import os.path as path
+from tempfile import gettempdir
+from getpass import getuser
 
 from git import InvalidGitRepositoryError, Repo
 
@@ -7,7 +9,7 @@ from git import InvalidGitRepositoryError, Repo
 class LegendTestData:
     def __init__(self):
         self._default_git_ref = 'main'
-        self._repo_path = '/tmp/legend-testdata'
+        self._repo_path = path.join(gettempdir(), 'legend-testdata-' + getuser())
         self._repo: Repo = self._init_testdata_repo()
 
     def _init_testdata_repo(self):

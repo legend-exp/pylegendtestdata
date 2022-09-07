@@ -8,15 +8,11 @@ ldata.checkout('49c7bdc')
 
 
 def test_get_file():
-    assert (
-        ldata.get_path('fcio/th228.fcio') == '/tmp/legend-testdata/data/fcio/th228.fcio'
-    )
+    ldata.get_path('fcio/th228.fcio')
 
 
 def test_get_directory():
-    assert (
-        ldata.get_path('fcio') == '/tmp/legend-testdata/data/fcio'
-    )
+    ldata.get_path('fcio')
 
 
 def test_file_not_found():
