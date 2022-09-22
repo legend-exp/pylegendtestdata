@@ -9,15 +9,22 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/legend-exp/legend-testdata-py?logo=github)
 ![License](https://img.shields.io/github/license/legend-exp/legend-testdata-py)
 
-Tiny Python package to access [LEGEND test data](https://github.com/legend-exp/legend-testdata). Usage:
+Tiny Python package to access [LEGEND test data](https://github.com/legend-exp/legend-testdata).
 
-```py
-from legend_testdata import LegendTestData
+Install (with pip):
+```console
+$ python -m pip install legend-testdata
+```
 
-ldata = LegendTestData()  # clone legend-exp/legend-testdata below /tmp
-ldata.checkout("968c9ba")  # optionally checkout a specific version
-ldata.get_path("orca/fc/L200-comm-20220519-phy-geds.orca")  # get absolute path to test file
-ldata.reset()  # checkout default branch (main)
+Usage:
+
+```pycon
+>>> from legend_testdata import LegendTestData
+>>> ldata = LegendTestData()  # clone legend-exp/legend-testdata below /tmp
+>>> ldata.checkout("968c9ba")  # optionally checkout a specific version
+>>> ldata.get_path("orca/fc/L200-comm-20220519-phy-geds.orca")  # get absolute path to test file
+'/tmp/legend-testdata-gipert/data/orca/fc/L200-comm-20220519-phy-geds.orca'
+>>> ldata.reset()  # checkout default branch (main)
 ```
 
 <sub>*This Python package layout is based on [pyproject-template](https://github.com/gipert/pyproject-template).*</sub>
