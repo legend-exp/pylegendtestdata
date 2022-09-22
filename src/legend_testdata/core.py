@@ -1,9 +1,12 @@
+import logging
 import os
 import os.path as path
 from getpass import getuser
 from tempfile import gettempdir
 
-from git import InvalidGitRepositoryError, Repo
+from git import GitCommandError, InvalidGitRepositoryError, Repo
+
+log = logging.getLogger(__name__)
 
 
 class LegendTestData:
@@ -21,6 +24,9 @@ class LegendTestData:
         try:
             repo = Repo(self._repo_path)
         except InvalidGitRepositoryError:
+            log.info(
+                f"Cloning https://github.com/legend-exp/legend-testdata in {self._repo_path}..."
+            )
             repo = Repo.clone_from(
                 "https://github.com/legend-exp/legend-testdata", self._repo_path
             )
@@ -30,7 +36,11 @@ class LegendTestData:
         return repo
 
     def checkout(self, git_ref: str):
-        self._repo.git.checkout(git_ref)
+        try:
+            self._repo.git.checkout(git_ref)
+        except GitCommandError:
+            self._repo.remote().pull()
+            self._repo.git.checkout(git_ref)
 
     def reset(self):
         self._repo.git.checkout(self._default_git_ref)
