@@ -12,7 +12,9 @@ log = logging.getLogger(__name__)
 class LegendTestData:
     def __init__(self):
         self._default_git_ref = "main"
-        self._repo_path = path.join(gettempdir(), "legend-testdata-" + getuser())
+        self._repo_path = os.getenv(
+            "LEGEND_TESTDATA", path.join(gettempdir(), "legend-testdata-" + getuser())
+        )
         self._repo: Repo = self._init_testdata_repo()
 
     def _init_testdata_repo(self):
