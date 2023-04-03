@@ -1,5 +1,4 @@
-"""
-"""
+"""Bare-bones Python package to access LEGEND test data files."""
 
 from legend_testdata._version import version as __version__
 from legend_testdata.core import LegendTestData

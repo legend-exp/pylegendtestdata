@@ -18,7 +18,6 @@ class LegendTestData:
         self._repo: Repo = self._init_testdata_repo()
 
     def _init_testdata_repo(self):
-
         if not path.isdir(self._repo_path):
             os.mkdir(self._repo_path)
 
