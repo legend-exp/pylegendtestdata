@@ -1,7 +1,7 @@
 import pytest
 from git import GitCommandError
 
-from legend_testdata import LegendTestData
+from legendtestdata import LegendTestData
 
 ldata = LegendTestData()
 ldata.checkout("49c7bdc")
