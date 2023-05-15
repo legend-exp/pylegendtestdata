@@ -19,7 +19,7 @@ $ python -m pip install legend-testdata
 Usage:
 
 ```pycon
->>> from legend_testdata import LegendTestData
+>>> from legendtestdata import LegendTestData
 >>> ldata = LegendTestData()  # clone legend-exp/legend-testdata below /tmp
 >>> ldata.checkout("968c9ba")  # optionally checkout a specific version
 >>> ldata.get_path("orca/fc/L200-comm-20220519-phy-geds.orca")  # get absolute path to test file
