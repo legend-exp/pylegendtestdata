@@ -13,7 +13,7 @@ Tiny Python package to access [LEGEND test data](https://github.com/legend-exp/l
 
 Install (with pip):
 ```console
-$ python -m pip install legend-testdata
+$ python -m pip install pylegendtestdata
 ```
 
 Usage:
