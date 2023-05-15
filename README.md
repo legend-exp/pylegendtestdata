@@ -1,6 +1,6 @@
 # pylegendtestdata
 
-[![PyPI](https://img.shields.io/pypi/v/legend-testdata?logo=pypi)](https://pypi.org/project/legend-testdata/)
+[![PyPI](https://img.shields.io/pypi/v/pylegendtestdata?logo=pypi)](https://pypi.org/project/pylegendtestdata/)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/legend-exp/pylegendtestdata?logo=git)
 [![GitHub Workflow Status](https://img.shields.io/github/checks-status/legend-exp/pylegendtestdata/main?label=main%20branch&logo=github)](https://github.com/legend-exp/pylegendtestdata/actions)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
