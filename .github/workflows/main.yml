@@ -51,4 +51,4 @@ jobs:
           python -m pip install --upgrade .[test]
           coverage run -m pytest
       - name: Upload Coverage to codecov.io
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
