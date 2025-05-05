@@ -36,7 +36,7 @@ class LegendTestData:
 
         return repo
 
-    def checkout(self, git_ref: str):
+    def checkout(self, git_ref: str) -> None:
         try:
             self._repo.git.checkout(git_ref)
         except GitCommandError:
@@ -46,7 +46,7 @@ class LegendTestData:
     def reset(self):
         self._repo.git.checkout(self._default_git_ref)
 
-    def get_path(self, filename: str):
+    def get_path(self, filename: str) -> str:
         """Get an absolute path to a LEGEND test data file.
 
         Parameters
@@ -62,3 +62,13 @@ class LegendTestData:
             )
 
         return full_path
+
+    def __getitem__(self, filename: str) -> str:
+        """Get an absolute path to a LEGEND test data file.
+
+        Parameters
+        ----------
+        filename : str
+            path of the file relative to legend-testdata/data
+        """
+        return self.get_path(filename)
